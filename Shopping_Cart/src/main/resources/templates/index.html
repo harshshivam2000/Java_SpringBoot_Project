@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Carousel Page</title>
+    <!-- Include Bootstrap CSS (required) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<section>
+    <!--      -->
+
+    <!--    For sliders images-->
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <!-- Only the first item should have "active" -->
+            <div class="carousel-item active">
+                <img src="image/ecom1.png" class="d-block w-100" alt="..." height="350px">
+            </div>
+
+            <div class="carousel-item">
+                <img src="image/ecom3.jpg" class="d-block w-100" alt="..." height="350px">
+            </div>
+
+            <div class="carousel-item">
+                <img src="image/ecom2.jpg" class="d-block w-100" alt="..." height="350px">
+            </div>
+
+            <!-- You can replace these placeholders -->
+            <!--            <div class="carousel-item">-->
+            <!--                <img src="img/ecom.jpg" class="d-block w-100" alt="..." height="350px">-->
+            <!--            </div>-->
+            <!--            <div class="carousel-item">-->
+            <!--                <img src="img/ecom5.jpg" class="d-block w-100" alt="..." height="350px">-->
+            <!--            </div>-->
+
+        </div>
+        <!--End sliders-->
+
+        <!-- start category module-->
+        <div class="container">
+            <div class="row">
+                <p class="text-center fs-4">Category</p>
+                <div class="col-md-2">
+                    <div class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img src="image/appli.png" width ="65%" height="140px">
+                            <p>Electronics</p>
+                        </div>
+                    </div>
+                </div>
+                <!--=========================================================================================================-->
+                <div class="col-md-2">
+                    <div class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img src="image/beuty.png" width ="65%" height="140px">
+                            <p>Beauty</p>
+                        </div>
+                    </div>
+                </div>
+                <!-=============================================================================================================--->
+                <div class="col-md-2">
+                    <div class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img src="image/pant.png" width ="65%" height="140px">
+                            <p>Clothes</p>
+                        </div>
+                    </div>
+                </div>
+                <!--===============================================================================================-->
+                <div class="col-md-2">
+                    <div class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img src="image/laptop.jpg" width ="65%" height="140px">
+                            <p>Laptop</p>
+                        </div>
+                    </div>
+                </div>
+                <!==========================================================================================---->
+                <div class="col-md-2">
+                    <div class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img src="image/mobile.png" width ="65%" height="140px">
+                            <p>Mobiles</p>
+                        </div>
+                    </div>
+                </div>
+                <!--   ==========================================================================             ---------------------------------------------->
+                <div class="col-md-2">
+                    <div class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img src="image/groccery.jpg" width ="65%" height="140px">
+                            <p>Grocery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        End Moduole  -->
+
+        <!--        Start Latest Product Module-->
+        <div class="container">
+            <div class="row">
+                <p class="text-center fs-4">Latest Product</p>
+
+                <div class="col-md-3">
+                    <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img alt="" src="image/omen.jpg" style="width:65%;" height="140px">
+
+                            <p>HP Laptop</p>
+                        </div>
+                    </div>
+                </div>
+                <!--    ===================================================================================-->
+                <div class="col-md-3">
+                    <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img  alt=""src="image/omen.jpg" class=width="65%" height="140px">
+                            <p>HP Laptop</p>
+                        </div>
+                    </div>
+                </div>
+                <!--=========================================================================================-->
+                <div class="col-md-3">
+                    <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img  alt=""src="image/omen.jpg" class=width="65%" height="140px">
+                            <p>HP Laptop</p>
+                        </div>
+                    </div>
+                </div>
+                <!--===========================================================================================                -->
+                <div class="col-md-3">
+                    <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                        <div class="card-body text-center">
+                            <img  alt=""src="image/omen.jpg" class=width="65%" height="140px">
+                            <p>HP Laptop</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!--        End Latest Product Module-->
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</section>
+
+<!-- Include Bootstrap JS (required for controls to work) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

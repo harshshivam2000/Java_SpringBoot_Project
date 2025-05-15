@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">-->
+    <!-- Include Bootstrap CSS if not already present -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<section>
+    <div class="container-fluid bg-primary p-5 mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="ch">
+                        <button class="btn btn-light text-dark ms-3 col-md-2">
+                            <i class="fa-solid fa-magnifying-glass"></i> Search
+                        </button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid  mt-1">
+        <div class="row">
+
+            <div class="col-md-2  p-0">
+                <div class="card shadow-sm p-0 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                Categories>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">Electronics</a>
+                            <a href="#" class="list-group-item list-group-item-action">Mobile Phone</a>
+                            <a href="#" class="list-group-item list-group-item-action">Clothes</a>
+                            <!-- <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-10">
+                <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <p class="fs-3 text-center">Products</p>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img alt src="/image/Laptop2.jpg" width="100%" height="150px">
+                                        <p class="fs-5 text-center">Laptop</p>
+                                        <div class="row text-center">
+                                            <p class="fs-6 fw-bold">&#8377; 50000
+                                                <span class="fs-6 text-succcess">20% off
+
+                                    </span>
+                                            </p>
+                                            <a  href="/products" class="btn btn-primary col-md-6 offset-md-3">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--       ++++++====================to do remove from backend                     =================================================================================================-->
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img alt src="/image/iphonemobiles.png" width="100%" height="150px">
+                                        <p class="fs-5 text-center">Mobiles</p>
+                                        <div class="row text-center">
+                                            <p class="fs-6 fw-bold">&#8377; 60000
+                                                <span class="fs-6 text-succcess">15% off
+
+                                    </span>
+                                            </p>
+                                            <a class="btn btn-primary col-md-6 offset-md-3">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--       =============================================================================================================                     -->
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img alt src="/image/ac.jpeg" width="100%" height="150px">
+                                        <p class="fs-5 text-center">Air Conditioner</p>
+                                        <div class="row text-center">
+                                            <p class="fs-6 fw-bold">&#8377; 40000
+                                                <span class="fs-6 text-succcess">25% off
+
+                                    </span>
+                                            </p>
+                                            <a class="btn btn-primary col-md-6 offset-md-3">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--     ===============================================================================================================                       -->
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img alt src="/image/clothes.jpg" width="100%" height="150px">
+                                        <p class="fs-5 text-center">Clothes</p>
+                                        <div class="row text-center">
+                                            <p class="fs-6 fw-bold">&#8377; 1500
+                                                <span class="fs-6 text-succcess">10% off
+
+                                    </span>
+                                            </p>
+                                            <a class="btn btn-primary col-md-6 offset-md-3">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--    =============================================================================================================================                        -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</section>
+</body>
+</html>
