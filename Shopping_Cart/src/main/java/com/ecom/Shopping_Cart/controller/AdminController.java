@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,7 +68,7 @@ public class AdminController {
                     session.setAttribute("errorMsg", "Not saved! Internal server error");
                 } else {
                     if (file != null && !file.isEmpty()) {
-                        File saveDir = new ClassPathResource("static/image").getFile();
+                        File saveDir = new ClassPathResource("static/images").getFile();
                         Path imageDirPath = Paths.get(saveDir.getAbsolutePath(), "category_img");
 
                         // Ensure directory exists
@@ -124,7 +123,7 @@ public class AdminController {
         Category updateCategory = categoryService.saveCategory(oldCategory);
         if (!ObjectUtils.isEmpty(updateCategory)) {
             if (!file.isEmpty()) {
-                File saveFile = new ClassPathResource("static/image/").getFile();
+                File saveFile = new ClassPathResource("static/images/").getFile();
                 Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + "category_img" + File.separator +
                         file.getOriginalFilename());
 
@@ -149,7 +148,7 @@ public class AdminController {
 
         if (!ObjectUtils.isEmpty(saveProduct)) {
             // Ensure the directory exists
-            File saveFile = new ClassPathResource("static/image").getFile();
+            File saveFile = new ClassPathResource("static/images").getFile();
             Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + "product_img");
 
             // Create the product_img directory if it does not exist

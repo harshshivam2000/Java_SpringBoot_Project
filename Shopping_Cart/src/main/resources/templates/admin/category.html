@@ -3,108 +3,141 @@
       th:replace="~{base::layout(~{::section})}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Category Page</title>
 </head>
 <body>
 <section>
     <div class="container-fluid p-5 mt-5">
         <div class="row">
 
-            <div class="col-md-3">
-                <div class="card card-sh">
-                    <div class="card-header text-center">
-                        <p class="fs-4">Add Category</p>
+            <!-- If no category is selected -->
+            <th:block th:if="${selectedCategory == null}">
+                <!-- Sidebar: Category List & Add Form -->
+                <div class="col-md-3">
 
-                        <!-- Success message -->
-                        <th:block th:if="${session.succMsg}">
-                            <p class="text-success fw-bold"> [[${session.succMsg}]]</p>
-                            <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
-                        </th:block>
-
-                        <!-- Error message -->
-                        <th:block th:if="${session.errorMsg}">
-                            <p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
-                            <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
-                        </th:block>
+                    <!-- Filter by Category -->
+                    <div class="card card-sh mb-4">
+                        <div class="card-header text-center fs-5">Filter by Category</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" th:each="cat : ${categorys}">
+                                <a th:href="@{/category/products/{name}(name=${cat.name})}" class="text-decoration-none">
+                                    [[${cat.name}]]
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="card-body">
-                        <form action="/admin/saveCategory" method="post" enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <label>Enter Category</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
+                    <!-- Add Category Form -->
+                    <div class="card card-sh">
+                        <div class="card-header text-center">
+                            <p class="fs-4">Add Category</p>
 
-                            <div class="mb-3">
-                                <label>Status</label>
+                            <!-- Success message -->
+                            <th:block th:if="${session.succMsg}">
+                                <p class="text-success fw-bold">[[${session.succMsg}]]</p>
+                                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                            </th:block>
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="true"
-                                           name="isActive" id="flexRadioDefault1" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Active
-                                    </label>
+                            <!-- Error message -->
+                            <th:block th:if="${session.errorMsg}">
+                                <p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+                                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                            </th:block>
+                        </div>
+
+                        <div class="card-body">
+                            <form action="/admin/saveCategory" method="post" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label>Enter Category</label>
+                                    <input type="text" name="name" class="form-control" required>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="isActive" value="false"
-                                           id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Inactive
-                                    </label>
+
+                                <div class="mb-3">
+                                    <label>Status</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="true" name="isActive" id="active" checked>
+                                        <label class="form-check-label" for="active">Active</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="isActive" value="false" id="inactive">
+                                        <label class="form-check-label" for="inactive">Inactive</label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="mb-3">
-                                <label>Upload Image</label>
-                                <input type="file" name="file" class="form-control">
-                            </div>
+                                <div class="mb-3">
+                                    <label>Upload Image</label>
+                                    <input type="file" name="file" class="form-control">
+                                </div>
 
-                            <button class="btn btn-primary col-md-12 mt-2">Save</button>
-                        </form>
+                                <button class="btn btn-primary col-md-12 mt-2">Save</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-8">
-                <div class="card card-sh">
-                    <div class="card-header text-center fs-4">Category Details</div>
+                <!-- Category Table -->
+                <div class="col-md-9">
+                    <div class="card card-sh mb-4">
+                        <div class="card-header text-center fs-4">Category Details</div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Sl No</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="cat, cStat : ${categorys}">
+                                    <th scope="row" th:text="${cStat.count}">1</th>
+                                    <td th:text="${cat.name}">Category</td>
+                                    <td th:text="${cat.isActive ? 'Active' : 'Inactive'}"></td>
+                                    <td>
+                                        <img th:src="@{'/image/category_img/' + ${cat.imageName}}" width="50" height="50" alt="Category Image">
+                                    </td>
+                                    <td>
+                                        <a th:href="@{'/admin/loadEditCategory/' + ${cat.id}}" class="btn btn-primary btn-sm">
+                                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                                        </a>
+                                        <a th:href="@{'/admin/deleteCategory/' + ${cat.id}}" class="btn btn-danger btn-sm">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+
+            <!-- If category is selected -->
+            <div class="col-md-9 offset-md-3 justify-content-center" th:if="${selectedCategory != null}">
+                <div class="card card-sh  ">
+                    <div class="card-header  text-center fs-4">
+                        [[${selectedCategory}]] Products
+                    </div>
                     <div class="card-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">Sl No</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="cat,c:${categorys}">
-                                <th scope="row">[[${c.count}]]</th>
+                        <div th:if="${#lists.isEmpty(products)}">
+                            <p class="text-muted text-center">No products found for this category.</p>
+                        </div>
+                        <div th:if="${!#lists.isEmpty(products)}">
+                            <div th:each="p : ${products}" class="mb-4 border-bottom pb-3">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3">
+                                        <img th:src="@{${p.imageUrl}}" class="img-fluid rounded" alt="Product Image">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h5 class="fw-bold" th:text="${p.name}">Product Name</h5>
+                                        <p th:text="${p.description}">Description</p>
+                                    </div>
+                                </div>
+                            </div>
 
-                                <td>[[${cat.name}]]</td>
-                                <td>[[${cat.isActive}]]</td>
-
-
-
-<!--                                //++++++=image in category=======================================================-->
-                                <td><img
-                                    th:src="@{'/image/category_img/'+${cat.imageName}}"
-                                    width="50px" height="50px"></td>
-
-<!--                               ===================for edit logo in category+============================-->
-                                <td><a th:href="@{'/admin/loadEditCategory/'+${cat.id}}" class="btn btn-primary btn-sm"><i
-                                        class="fa-solid fa-pen-to-square  fa-1x"></i> Edit </a>
-
-<!--                                    ===============for delete logo===========================================================-->
-                                    <a
-                                            th:href="@{'/admin/deleteCategory/'+${cat.id}}"
-                                            class="btn btn-danger btn-sm"><i
-                                            class="fa-solid fa-trash  fa-1x"></i>Delete</a></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        </div>
                     </div>
                 </div>
             </div>
